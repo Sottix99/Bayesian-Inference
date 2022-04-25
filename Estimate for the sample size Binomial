@@ -1,8 +1,9 @@
-# obs
-s_obs<-12
+# We want to make inference on the n parameter of a binomial distribution, we only now the p parameter of the binomial that's equal to 0.45 and
+# we have observed a data point s_obs = 12
 
-# the N_Max is equal to 200
+# we fix the maximum n equal to 200
 
+s_obs<-12 # obs
 # function for n
 likelihood <- function(N){
   out <- dbinom(x=s_obs,size=N,p=0.45)

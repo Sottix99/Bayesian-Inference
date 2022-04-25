@@ -1,8 +1,13 @@
+# We want to make inference on the n parameter of a binomial distribution, we only now the p parameter of the binomial that's equal to 0.45 and
+# we have observed a data point s_obs = 12
+
+# we fix the maximum n equal to 200
+
 
 # obs
 s_obs<-12
 
-# the N_Max is equal to 200
+
 
 # function for n
 likelihood <- function(N){
@@ -25,7 +30,7 @@ posterior<-function(n){
 which.max(posterior(1:200))
 
 # mean
-sum((1:200)*(posterior(1:200)/sum(posterior(1:200)))) # prima normalizzo la funzione col suo massimo e poi la moltiplico per 1:200
+sum((1:200)*(posterior(1:200)/sum(posterior(1:200)))) 
 
 # median 
 (1:200)*(cumsum(posterior(1:200)/sum(posterior(1:200)))>=0.5) # ----> 27

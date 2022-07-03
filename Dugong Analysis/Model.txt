@@ -1,0 +1,20 @@
+#  MODEL SPECIFICATION 
+
+model
+	{
+		for( i in 1:N ) {
+			Y[i] ~ dnorm(mu[i], precision)
+			mu[i] <- alpha - beta * pow(gamma,x[i])			
+		}
+	                Ypred30 ~ dnorm(condexp30, precision)
+                        Ypred20 ~ dnorm(condexp20, precision)
+			condexp30 <- alpha - beta * pow(gamma,30)			
+                        condexp20 <- alpha - beta * pow(gamma,20)
+
+		alpha ~ dnorm(0.0, 1.0)
+		beta ~ dnorm(0.0, 1.0)
+		gamma ~ dbeta(1.0, 1.0)
+		tau ~ dgamma(0.5, 0.05)
+
+precision<- 1/sqrt(tau)
+	}
